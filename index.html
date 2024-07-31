@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Up</title>
+</head>
+
+<body>
+    <div id="location"></div>
+    <script>
+        let username;
+        let password;
+        let windowPopUp = alert("Allow Location Access");
+        let userLocation = prompt("Please enter your location (with first letter capital)");
+        if (userLocation === "Punjab" || userLocation === "Haryana" || userLocation === "Chandigarh") {
+            username = prompt("Please enter your username");
+            password = prompt("Please enter your password");
+        } else {
+            alert("Sorry, this website is only available in Punjab, Haryana and Chandigarh");
+        }
+        let database = [{ username: "topo", password: "1234" },
+        { username: "kris", password: "5678" },
+        { username: "shubham", password: "9101" },
+        { username: "alisa", password: "1112" },
+        { username: "alexa", password: "2345" },
+        { username: "jame", password: "8234" },
+        { username: "joe", password: "8900" },
+        { username: "may", password: "3454" },
+        { username: "karan", password: "3480" },
+        { username: "shubh", password: "6785" }];
+
+        function isUserValid(username, password) {
+            for (var i = 0; i < database.length; i++) {
+                if ((database[i].username === username) && (database[i].password === password)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        let element = document.getElementById("location");
+        function signIn(username, password) {
+            if (isUserValid(username, password)) {
+                if (userLocation === "Punjab") {
+                    element.innerHTML += "Welcome to Punjab";
+                    element.innerHTML += "<br>";
+                    element.innerHTML += "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501850.964508368!2d72.76797389603512!3d31.00461331973395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa569e7355%3A0x8fbd263103a38861!2sPunjab!5e0!3m2!1sen!2sin!4v1722405948441!5m2!1sen!2sin' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>";
+                } else if (userLocation === "Haryana") {
+                    element.innerHTML += "Welcome to Haryana";
+                    element.innerHTML += "<br>";
+                    element.innerHTML += "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563977.8074237383!2d73.39608329825731!3d29.26919980545635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390db00b8670400b%3A0x732eaab4aaa6c143!2sHaryana!5e0!3m2!1sen!2sin!4v1722406509429!5m2!1sen!2sin' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>";
+                } else if (userLocation === "Chandigarh") {
+                    element.innerHTML += "Welcome to Chandigarh";
+                    element.innerHTML += "<br>";
+                    element.innerHTML += "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109744.05905737827!2d76.68831051322432!3d30.732401984935624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fed0be66ec96b%3A0xa5ff67f9527319fe!2sChandigarh!5e0!3m2!1sen!2sin!4v1722406650154!5m2!1sen!2sin' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>";
+                }
+            } else {
+                alert("Sorry, wrong username or password");
+            }
+        }
+
+        signIn(username, password, userLocation);
+    </script>
+</body>
+
+</html>
